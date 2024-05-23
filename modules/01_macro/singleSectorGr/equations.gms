@@ -17,9 +17,12 @@
 *' agricultural costs, which are delivered by the land use model MAgPIE, are deduced from disposable output.
 *' Net tax revenues and adjustment costs converge to zero in the optimal solution (equilibrium point).
 ***---------------------------------------------------------------------------
-qm_budget(ttot,regi)$( ttot.val ge cm_startyear ) ..
-    vm_cesIO(ttot,regi,"inco") * vm_damageFactor(ttot,regi)
-  - vm_Xport(ttot,regi,"good")
+qm_budget(ttot,regi)$( ttot.val ge cm_startyear ) .. 
+    vm_cesIO(ttot,regi,"inco") * (1-((1-vm_damageFactor(ttot,regi))
+	*(((1-vm_qAdapt(ttot,regi))+p01_adapt1(regi)*vm_qAdapt(ttot,regi)**p01_adapt2(regi))$(p01_adapt1(regi) ne 0)
+	+ (1)$(p01_adapt1(regi) eq 0)))
+	) 
+  - vm_Xport(ttot,regi,"good") 
   + vm_Mport(ttot,regi,"good") * (1 - pm_tradecostgood(regi) - pm_risk_premium(regi))
   =g=
     vm_cons(ttot,regi)

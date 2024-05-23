@@ -10,14 +10,24 @@ pm_consPC(ttot,regi)$(ttot.val gt 2005 and ttot.val le 2150 and (pm_SolNonInfes(
     vm_cons.l(ttot,regi)/pm_pop(ttot,regi)
 ;
 
+$IFTHEN.ADAPT %cm_adaptation% == "on"
+pm_qAdapt(ttot,regi)$(pm_SolNonInfes(regi) eq 1) =
+    vm_qAdapt.l(ttot,regi)
+;
+$ENDIF.ADAPT
+
 *** Interpolate years
 loop(ttot$(ttot.val ge 2005),
 	loop(tall$(pm_tall_2_ttot(tall, ttot)),
 		pm_consPC(tall,regi) =
 		    (1- pm_interpolWeight_ttot_tall(tall)) * pm_consPC(ttot,regi)
 		    + pm_interpolWeight_ttot_tall(tall) * pm_consPC(ttot + 1,regi);
+		pm_qAdapt(tall,regi) =
+		    (1- pm_interpolWeight_ttot_tall(tall)) * pm_qAdapt(ttot,regi)
+		    + pm_interpolWeight_ttot_tall(tall) * pm_qAdapt(ttot + 1,regi);
 ));
 pm_consPC(tall,regi)$(tall.val gt 2150) = pm_consPC("2150",regi);
+pm_qAdapt(tall,regi)$(tall.val gt 2150) = pm_qAdapt("2150",regi);
 
 
 *** output parameter for diagnostics

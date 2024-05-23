@@ -15,6 +15,9 @@ p01_cumDeprecFactor_new(ttot,all_regi,all_in)                    "Investment dep
 p01_ppfen_ratios(ttot,all_regi,all_in,all_in)                   "Limit ratio of two primary production factors of energy (ppfEn)."
 pm_ppfen_shares(ttot,all_regi,all_in,all_in)                    "Limit the share of one ppfEn in total CES nest inputs."
 pm_consPC(tall,all_regi)                                        "Consumption per capita"
+p01_adapt1(all_regi)
+p01_adapt2(all_regi)
+pm_qAdapt(tall,all_regi)
 ;   
 
 *** output parameters
@@ -35,7 +38,8 @@ v01_invMacroAdj(ttot,all_regi,all_in)                           "Adjustment cost
 vm_invInno(ttot,all_regi,all_in)                                "Investment into innovation"
 vm_invImi(ttot, all_regi,all_in)                                "Investment into imitation" 
 v01_enerSerAdj(tall,all_regi,all_in)                             "adjustment costs for energy service transformations"
-;
+vm_qAdapt(tall,all_regi)
+;   
 ***------------------------------------------------------------ -------------------
 ***                                   EQUATIONS 
 ***------------------------------------------------------------ -------------------

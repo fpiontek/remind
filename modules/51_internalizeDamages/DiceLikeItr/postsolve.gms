@@ -14,7 +14,8 @@ p51_scc(tall)$((tall.val ge 2020) and (tall.val le 2150)) = 1000 *
 	* pm_consPC(tall,regi2)/pm_consPC(tall2,regi2) 
         * pm_GDPGross(tall2,regi2) 
 	* pm_temperatureImpulseResponseCO2(tall2,tall)
-	* pm_damageMarginal(tall2,"USA") !! USA stands as a dummy for a global value here
+*	* pm_damageMarginal(tall2,"USA") !! USA stands as a dummy for a global value here
+	* pm_damageMarginal(tall2,regi2)*(1-pm_qAdapt(tall2,regi2))
     )
    )
 ;

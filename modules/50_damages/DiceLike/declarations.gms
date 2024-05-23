@@ -8,8 +8,9 @@
 parameters
 pm_damage(tall,all_regi)                             "damage factor (reduces GDP)"
 pm_damageMarginal(tall,all_regi)                     "damage function derivative"
-p50_damageFuncCoef1			"damage function coefficient, linear in temperature"
-p50_damageFuncCoef2 			"damage function coefficient, quadratic in temperture"
+p50_damageFuncCoef1(all_regi)			"damage function coefficient, linear in temperature"
+p50_damageFuncCoef2(all_regi) 			"damage function coefficient, quadratic in temperture"
+p50_damageFuncCoef3(all_regi) 			"damage function coefficient, temperature exponent"
 ;
 
 positive variable

@@ -6,6 +6,12 @@
 *** |  Contact: remind@pik-potsdam.de
 *** SOF ./modules/01_macro/singleSectorGr/bounds.gms
 
+vm_qAdapt.fx(tall,regi)$(tall.val le cm_startyear) = 0;
+$IFTHEN.ADAPT %cm_adaptation% == "off"
+vm_qAdapt.fx(tall,regi) = 0;
+$ENDIF.ADAPT
+vm_qAdapt.up(tall,regi) = 1;
+
 *nb* lower bounds on CES values
 vm_cons.lo(t,regi)     = 1e-3;
 vm_cesIO.lo(t,regi,in)$( NOT in_industry_dyn37(in) ) 
